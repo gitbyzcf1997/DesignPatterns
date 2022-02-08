@@ -8,7 +8,7 @@ package com.zcf.dp.command;
  */
 public class InsertCommand extends Command {
     Content c;
-    String strToInsert="htt://www.baidu.com";
+    String strToInsert=" htt://www.baidu.com ";
 
     public InsertCommand(Content c) {
         this.c = c;

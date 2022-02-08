@@ -2,6 +2,8 @@ package com.zcf.dp.command;
 
 import org.aspectj.bridge.ICommand;
 
+import java.util.ArrayList;
+
 /**
  * @Auther:ZhenCF
  * @Date: 2022-02-09-0:39
@@ -20,6 +22,18 @@ public class Main {
         Command deleteCommand=new DeleteCommand(content);
         deleteCommand.doit();
         deleteCommand.undo();
+        //System.out.println(content.msg);
+        ArrayList<Command> commands = new ArrayList<>();
+        commands.add(new InsertCommand(content));
+        commands.add(new CopyCommend(content));
+        commands.add(new DeleteCommand(content));
+        for(Command command:commands){
+            command.doit();
+        }
+        System.out.println(content.msg);
+        for(int i=commands.size()-1;i>=0;i--){
+            commands.get(i).undo();
+        }
         System.out.println(content.msg);
     }
 }
